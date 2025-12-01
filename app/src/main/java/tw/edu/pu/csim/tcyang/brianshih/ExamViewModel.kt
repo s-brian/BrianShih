@@ -16,4 +16,6 @@ class ExamViewModel : ViewModel() {
         screenWidth = width
         screenHeight = height
     }
+
+
 }
