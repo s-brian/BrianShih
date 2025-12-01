@@ -22,7 +22,22 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
 
+        WindowCompat.setDecorFitsSystemWindows(
+            window, false)
 
+        val windowMetricsCalculator =
+            WindowMetricsCalculator.getOrCreate()
+
+        val currentWindowMetrics=
+            windowMetricsCalculator.computeCurrentWindowMetrics(this)
+
+        val bounds = currentWindowMetrics.bounds
+
+        val screenWidthPx = bounds.width().toFloat()
+        val screenHeightPx = bounds.height().toFloat()
+
+        val examViewModel: ExamViewModel by viewModels()
+        examViewModel.SetGameSize(screenWidthPx , screenHeightPx)
 
         setContent {
             ExamScreen()
