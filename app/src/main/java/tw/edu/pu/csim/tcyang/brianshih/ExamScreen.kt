@@ -81,6 +81,13 @@ fun ExamScreen(examViewModel: ExamViewModel = viewModel()){
                 color = Color.Black,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
+            Spacer(
+                modifier = Modifier.height(10.dp))
+            Text(
+                text = "score: ${examViewModel.score} ${examViewModel.scoretext}",
+                color = Color.Black,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
         }
 
         Row(
@@ -108,7 +115,6 @@ fun ExamScreen(examViewModel: ExamViewModel = viewModel()){
                     detectDragGestures { change, dragAmount ->
                         change.consume()
                         val dragAmountDpX = with(density) { dragAmount.x.toDp().value }
-                        val dragAmountDpY = with(density) { dragAmount.y.toDp().value }
 
                         examViewModel.MoveCircle(dragAmountDpX)
                     }

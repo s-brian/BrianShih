@@ -3,6 +3,7 @@ package tw.edu.pu.csim.tcyang.brianshih
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,6 +28,9 @@ class ExamViewModel : ViewModel() {
     var selectedImageId by mutableStateOf(R.drawable.service0)
         private set
 
+    var scoretext by mutableStateOf("")
+
+    var score by mutableStateOf(0)
 
     fun SetGameSize(width: Float, height: Float) {
         screenWidth = width
@@ -56,6 +60,10 @@ class ExamViewModel : ViewModel() {
         circleY = 0f
     }
 
+    val role0 = Rect(82f, 810f, 382f, 1110f)
+    val role1 = Rect(698f, 810f, 998f, 1110f)
+    val role2 = Rect(0f, 1620f, 300f, 1920f)
+    val role3 = Rect(780f, 1620f, 1080f, 1920f)
     suspend fun startFalling() {
         while (true) {
             delay(DROP_INTERVAL_MS)
@@ -65,7 +73,15 @@ class ExamViewModel : ViewModel() {
             if (circleY >= screenWidth - 300) {
                 resetImagePosition()
                 pickRandomImage()
+                score+=1
+                scoretext = "fell to the bottom"
+            }
+
+            if (circleX >= 100 && circleX){
+
             }
         }
     }
+
+
 }
